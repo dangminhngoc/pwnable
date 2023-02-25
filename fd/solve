@@ -1,0 +1,24 @@
+Learn about file descriptor -> a number identify an open file in the system
+0 => input stream
+1 => output stream
+2 => error stream
+
+```
+    int fd = atoi( argv[1] ) - 0x1234;
+	int len = 0;
+	len = read(fd, buf, 32);
+```
+
+To solve this, input the value so that fd == 0, which means we will be reading 
+data from input stream into buf. Call `./fd 4660 1` and then the program will 
+wait for your input.
+
+Check the condition in this loc
+```
+if(!strcmp("LETMEWIN\n", buf)){
+```
+and we can determine after the input stream is open, we need to enter `LETMEWIN\n`.
+The condition will now satisfied and this program will read the flag from flag file for us.
+
+
+
